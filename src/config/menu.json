@@ -1,0 +1,59 @@
+{
+  "main": [
+    {
+      "name": "INICIO",
+      "url": "/"
+    },
+    {
+      "name": "SERVICIOS",
+      "url": "/servicios"
+    },
+    {
+      "name": "DJS",
+      "url": "/djs"
+    },
+    {
+      "name": "CONTACTO",
+      "url": "/contacto"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Sobre nosotros",
+      "menu": [
+        {
+          "text": "+34 123456789"
+        },
+        {
+          "text": "info@jjevents.es"
+        }
+      ]
+    },
+    {
+      "name": "Contacto",
+      "menu": [
+        {
+          "text": "Contacto",
+          "url": "/contacto"
+        }
+      ]
+    },
+    {
+      "name": "Soporte",
+      "menu": [
+        {
+          "text": "FAQ",
+          "url": "/faq"
+        },
+        {
+          "text": "Politica de privacidad",
+          "url": "/privacy-policy"
+        },
+        {
+          "text": "Terminos y condiciones",
+          "url": "/terms-conditions"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+---
+import Base from "@/layouts/Base.astro";
+import Cta from "@/layouts/components/Cta.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const entry = (await getEntry(
+  "pricing",
+  "-index"
+)) as CollectionEntry<"pricing">;
+const { title, description, plans, call_to_action } = entry.data;
+---
+
+<Base title={title} description={description}>
+  <section class="section pb-0">
+    <div class="container">
+      <p class="w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] text-left md:text-center text-lg md:text-xl font-medium text-gray-700 leading-relaxed tracking-wide bg-primary/5 border-y-2 border-primary/20 py-12 mb-16 shadow-sm px-8 md:px-32 lg:px-60 xl:px-80">
+      {description}
+      </p>
+      <h1 class="text-center font-normal">{title}</h1>
+      <div class="section row -mt-10 justify-center md:mt-0">
+        {
+          plans?.map((plan) => (
+            <div
+              class={`col-12 md:col-4 flex ${
+                !plan.recommended ? "lg:px-0" : "col-recommended"
+              }`}
+            >
+              <div class="card text-center h-full w-full flex flex-col justify-between">
+                <div>
+                  <h4>{plan.title}</h4>
+                  <div class="mt-5">
+                    <span class="text-5xl text-text-dark">${plan.price}</span>
+                    <span>/ {plan.type}</span>
+                  </div>
+                  <h6 class="mt-2 font-normal text-text">{plan.subtitle}</h6>
+                  <ul class="mt-5 mb-6">
+                    {plan?.features?.map((feature) => (
+                      <li class="mb-[10px] leading-5">{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+                <a
+                  class={`btn mt-auto ${
+                    plan.recommended ? "btn-primary" : "btn-outline-primary"
+                  }`}
+                  href={plan.button.link}
+                >
+                  {plan.button.label}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <Cta cta={call_to_action} />
+</Base>
